@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +20,8 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Integer> findAllPublished();
 
     @Filter
-    List<Book> filterBooks(Map book,
-                           EntityManager entityManager,
-                           FilterMapSort sort);
+    List<Book> filterBooks(Map book);
+
+    @Filter
+    List<Book> filterAndSortBooks(Map book, FilterMapSort sort);
 }

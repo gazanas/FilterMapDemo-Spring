@@ -25,8 +25,7 @@ public class BookController {
     @GetMapping(path = "/show")
     public String show(@RequestParam MultiValueMap book, Model model) {
 
-        model.addAttribute("books", bookRepository.filterBooks(book,
-                                            entityManager,
+        model.addAttribute("books", bookRepository.filterAndSortBooks(book,
                                             FilterMapSort.instance("title")));
 
         model.addAttribute("titles", bookRepository.findAllTitles());
